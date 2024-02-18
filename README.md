@@ -4,7 +4,7 @@ Creating an artificial dataset using Stable Diffusion for different emotions on 
 The Stable Diffusion technique is utilized to generate synthetic images depicting various human emotions. This artificial dataset aims to aid in sentiment analysis research by providing diverse facial expressions for training and evaluation purposes. Here, it is showm how to create human faces of various types to be cataloged into 4 emotions.    
 
 ## Diffusers
-Diffusers is the go-to library for state-of-the-art pretrained diffusion models for generating images, audio, and even 3D structures of molecules. Whether you’re looking for a simple inference solution or want to train your own diffusion model, Diffusers is a modular toolbox that supports both. Our library is designed with a focus on usability over performance, simple over easy, and customizability over abstractions.
+Diffusers is the go-to library for state-of-the-art pretrained diffusion models for generating images, audio, and even 3D structures of molecules. Whether one is looking for a simple inference solution or want to train their own diffusion model, Diffusers is a modular toolbox that supports both. The library is designed with a focus on usability over performance, simple over easy, and customizability over abstractions.
 
 The library has three main components:
 
