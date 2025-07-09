@@ -1,17 +1,43 @@
-# Artifical-Dataset-For-Faces
-Creating an artificial dataset using Stable Diffusion for different emotions on human faces (which can be further be utilized for sentiment analysis)  
-## Introduction:
-The Stable Diffusion technique is utilized to generate synthetic images depicting various human emotions. This artificial dataset aims to aid in sentiment analysis research by providing diverse facial expressions for training and evaluation purposes. Here, it is showm how to create human faces of various types to be cataloged into 4 emotions.    
+# Artificial-Dataset-For-Faces
+
+Creating an artificial dataset using Stable Diffusion for different emotions on human faces, which can be further utilized for emotion classification or sentiment analysis.
+
+## Introduction
+
+This project uses the Stable Diffusion technique to generate synthetic images of human faces representing four distinct emotions: **happy**, **sad**, **angry**, and **surprised**. The generated dataset is intended to aid in emotion recognition and sentiment analysis tasks. Each face is conditioned on randomly selected attributes such as ethnicity and gender.
+
+To improve semantic accuracy, the project uses **CLIP-based reranking** to select the most relevant image from multiple generated candidates based on the textual prompt.
 
 ## Diffusers
-Diffusers is the go-to library for state-of-the-art pretrained diffusion models for generating images, audio, and even 3D structures of molecules. Whether one is looking for a simple inference solution or want to train their own diffusion model, Diffusers is a modular toolbox that supports both. The library is designed with a focus on usability over performance, simple over easy, and customizability over abstractions.
 
-The library has three main components:
+[Hugging Face Diffusers](https://github.com/huggingface/diffusers) is a library for pretrained diffusion models that supports generation tasks like images, audio, and more.
 
-State-of-the-art diffusion pipelines for inference with just a few lines of code.  
-Interchangeable noise schedulers for balancing trade-offs between generation speed and quality.  
-Pretrained models that can be used as building blocks, and combined with schedulers, for creating your own end-to-end diffusion systems.  
-## Dataset Description:
-The dataset comprises synthetic images representing different emotions such as happiness, sadness, anger and surprise. Each image is labelled and categorized into its  respective folder according to the prompts it was made to be used.  
-## Dataset Usage:
-Researchers and practitioners can employ this dataset for emotion recognition and sentiment analysis tasks. By training machine learning models on this diverse dataset, accurate emotion detection systems can be developed.
+Key features of the library used in this project:
+- Pretrained Stable Diffusion pipelines for fast inference.
+- Support for negative prompts to filter undesired image features.
+- Customizable noise schedulers and model components.
+
+## CLIP-Based Reranking
+
+To ensure the generated image accurately reflects the intended prompt, each image is scored using OpenAI's CLIP model (`clip-vit-base-patch32`). For every prompt:
+- Multiple candidates are generated (e.g., 3 per prompt).
+- The image with the highest CLIP score is selected and saved.
+
+This process helps filter out poor or off-prompt generations, resulting in a higher-quality dataset.
+
+## Dataset Description
+
+- **Structure**: The dataset is organized into folders by emotion (e.g., `happy/`, `sad/`, etc.).
+- **Images per emotion**: Multiple unique samples are saved per emotion, with diversity in ethnicity and gender.
+- **Format**: Images are saved in `.png` format and zipped as `faces_dataset.zip`.
+
+Each saved image is the top-ranked output from a batch of multiple generated candidates, scored using CLIP.
+
+## Dataset Usage
+
+This dataset can be used in:
+- Emotion recognition tasks
+- Facial expression classification
+- Synthetic data augmentation
+- Training/testing deep learning models in sentiment analysis
+
